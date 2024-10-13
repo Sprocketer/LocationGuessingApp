@@ -4,13 +4,19 @@ import random
 token = "MLY|7884436731651628|991d31489dc0ba2a68fd9c321c4d2cd1"
 latlong = ""
 
- 
-min_long = round(random.uniform(-180, 179.98), 2)
-min_lat = round(random.uniform(-90, 89.98), 2)
-max_long = min_long + 0.02
-max_lat = min_lat + 0.02
+base = "https://graph.mapillary.com/images?access_token=MLY|7884436731651628|991d31489dc0ba2a68fd9c321c4d2cd1&fields=id&bbox=" 
+min_long = random.randint(-180, 175)
+min_lat = random.randint(-90, 85)
+max_long = min_long + 5
+max_lat = min_lat + 5
 bbox = str(min_long) + "," + str(min_lat) + "," + str(max_long) + "," + str(max_lat)
-print(bbox)
+bbox1 = "-180,-90,180,90"
+print(bbox1)
+x = requests.get(base + bbox1)
+parsed_data = json.loads(x.text)
+print(parsed_data)
+print(base + bbox1)
+print(x.text)
 
 ## check format in image you
 ## you need a bounding box to define the area it takes images over
