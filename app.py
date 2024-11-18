@@ -47,12 +47,13 @@ def insert():
 @app.route('/solo')
 def solo():
 	base = "https://graph.mapillary.com/images?access_token=MLY|7884436731651628|991d31489dc0ba2a68fd9c321c4d2cd1&fields=id&bbox="
+	bbox1 = "-6.3872,50.3966,1.7623,55.8113"
 	bbox = "-180,-90,180,90" 
-	x = requests.get(base + bbox)
+	x = requests.get(base + bbox1, params={'limit': 10})
 
 	parsed_data = json.loads(x.text)
 	image = parsed_data['data'][0]['id']
 	print(image)
 	return render_template('solo.html', image=image)
 
-app.run()
+app.run() 
