@@ -1,10 +1,8 @@
-
 from flask import Flask, render_template, request
 import requests
 import sqlite3
 import json
 import random
-
 
 app = Flask(__name__)
 
@@ -56,4 +54,4 @@ def solo():
 	print(image)
 	return render_template('solo.html', image=image)
 
-app.run() 
+#app.run() 
