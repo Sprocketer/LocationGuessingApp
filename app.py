@@ -6,9 +6,28 @@ import random
 
 app = Flask(__name__)
 
+def create():
+	with sqlite3.connect('login.db') as db:
+		cursor = db.cursor()
+		cursor.execute(	"""	CREATE TABLE IF NOT EXISTS Users(
+						Username text,
+						Password text,
+						Primary Key(Username))
+				""")
+		db.commit()
+	print('CREATE')
+create()
+
 @app.route('/')
 def login():
 	return render_template('index.html')
+
+@app.route('/latlong')
+def latlong():
+	lat = request.args.get('lat')
+	lng = request.args.get('lng')
+	print(lat, lng)
+	return "latlong"
 
 @app.route('/signup')
 def signup():

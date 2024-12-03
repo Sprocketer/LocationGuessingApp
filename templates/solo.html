@@ -61,12 +61,17 @@
         center: [70, 60], // Longitude, Latitude (starting point of the map)
         zoom: 1 // Zoom level (starting zoom level)
       });
+
+
       // Create constants for the latitude and longitude.
        map.on('click', function (e) {
-     const lat = e.lngLat.lat;
-     const lng = e.lngLat.lng;
-     console.log(`Latitude: ${lat}, Longitude: ${lng}`);
-    });
+        const lat = e.lngLat.lat;
+        const lng = e.lngLat.lng;
+        console.log(`Latitude: ${lat}, Longitude: ${lng}`);
+        const response = fetch(`/latlong?lat=${lat}&lng=${lng}`, {
+          method: "GET",
+        });
+      });
 
       
 
