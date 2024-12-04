@@ -68,9 +68,7 @@
         const lat = e.lngLat.lat;
         const lng = e.lngLat.lng;
         console.log(`Latitude: ${lat}, Longitude: ${lng}`);
-        const response = fetch(`/latlong?lat=${lat}&lng=${lng}`, {
-          method: "GET",
-        });
+        const response = fetch(`/latlong?lat=${lat}&lng=${lng}`)
       });
 
       
