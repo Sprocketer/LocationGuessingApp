@@ -15,13 +15,11 @@
       imageId: {{image}} 
     });
   </script>
-  <!DOCTYPE html>
-  <html>
-  <head>
-  
-  </head>
+ 
+
+ 
   <body>
-  
+    <button onclick="submit(lat, lng)"> Submit </button>
   
   
   <html lang="en">
@@ -62,15 +60,25 @@
         zoom: 1 // Zoom level (starting zoom level)
       });
 
-
+      const marker = new mapboxgl.Marker()  // Create new marker
       // Create constants for the latitude and longitude.
-       map.on('click', function (e) {
-        const lat = e.lngLat.lat;
-        const lng = e.lngLat.lng;
+       map.on('click', function (e) {   // When clicked on the map
+        const lat = e.lngLat.lat; 
+        const lng = e.lngLat.lng;      // storing lat long values of the click event individually
         console.log(`Latitude: ${lat}, Longitude: ${lng}`);
         const response = fetch(`/latlong?lat=${lat}&lng=${lng}`)
-      });
+        
+        
+        marker.setLngLat([lng, lat]) // Set it to the location user clicked on
+        .addTo(map); 
+           
+       });
+      function submit(lat, lng) {
+        
+      }
+      
 
+      
       
 
     </script>
